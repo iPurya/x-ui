@@ -298,7 +298,6 @@ install_bbr() {
     # temporary workaround for installing bbr
     bash <(curl -L -s https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
     echo ""
-    before_show_menu
 }
 
 update_shell() {
@@ -613,6 +612,9 @@ if [[ $# > 0 ]]; then
         ;;
     "v2-ui")
         check_install 0 && migrate_v2_ui 0
+        ;;
+    "bbr")
+        check_install 0 && install_bbr 0
         ;;
     "update")
         check_install 0 && update 0

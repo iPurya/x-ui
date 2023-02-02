@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.authors="hossin.asaadi77@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y --no-install-recommends -y ca-certificates \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-ENV TZ=Asia/Shanghai
+ENV TZ=Asia/Tehran
 WORKDIR /root
 COPY --from=builder  /root/main /root/x-ui
 COPY ./bin/. /root/bin/.
