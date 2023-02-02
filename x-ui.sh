@@ -614,7 +614,7 @@ if [[ $# > 0 ]]; then
         check_install 0 && migrate_v2_ui 0
         ;;
     "bbr")
-        check_install 0 && install_bbr 0
+        install_bbr 0
         ;;
     "update")
         check_install 0 && update 0
