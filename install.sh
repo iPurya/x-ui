@@ -81,27 +81,6 @@ install_base() {
     fi
 }
 
-#This function will be called when user installed x-ui out of sercurity
-config_after_install() {
-    echo -e "${yellow} Install/update finished need to modify panel settings out of security ${plain}"
-    read -p "are you continue,if you type n will skip this at this time[y/n]": config_confirm
-    if [[ x"${config_confirm}" == x"y" || x"${config_confirm}" == x"Y" ]]; then
-        read -p "please set up your username:" config_account
-        echo -e "${yellow}your username will be:${config_account}${plain}"
-        read -p "please set up your password:" config_password
-        echo -e "${yellow}your password will be:${config_password}${plain}"
-        read -p "please set up the panel port:" config_port
-        echo -e "${yellow}your panel port is:${config_port}${plain}"
-        echo -e "${yellow}initializing,wait some time here...${plain}"
-        /usr/local/x-ui/x-ui setting -username ${config_account} -password ${config_password}
-        echo -e "${yellow}account name and password set down!${plain}"
-        /usr/local/x-ui/x-ui setting -port ${config_port}
-        echo -e "${yellow}panel port set down!${plain}"
-    else
-        echo -e "${red}Canceled, all setting items are default settings${plain}"
-    fi
-}
-
 install_x-ui() {
     systemctl stop x-ui
     cd /usr/local/
@@ -141,7 +120,6 @@ install_x-ui() {
     wget --no-check-certificate -O /usr/bin/x-ui https://raw.githubusercontent.com/ipurya/x-ui/main/x-ui.sh
     chmod +x /usr/local/x-ui/x-ui.sh
     chmod +x /usr/bin/x-ui
-    config_after_install
     #echo -e "如果是全新安装，默认网页端口为 ${green}54321${plain}，用户名和密码默认都是 ${green}admin${plain}"
     #echo -e "请自行确保此端口没有被其他程序占用，${yellow}并且确保 54321 端口已放行${plain}"
     #    echo -e "若想将 54321 修改为其它端口，输入 x-ui 命令进行修改，同样也要确保你修改的端口也是放行的"
