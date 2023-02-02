@@ -30,7 +30,7 @@ func NewCheckClientIpJob() *CheckClientIpJob {
 }
 
 func (j *CheckClientIpJob) Run() {
-	logger.Debug("Check Client IP Job...")
+	logger.Debug("Check Client IP Job..")
 	processLogFile()
 
 	// disAllowedIps = []string{"192.168.1.183","192.168.1.197"}
